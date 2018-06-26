@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-import '../models/Note';
+import './models/Note';
 
 const Note = mongoose.model('Note');
 /*Подключение к базе данных именновоный экспорт*/
 
 export function setUpConnection(){
-	mongoose.connect(`mongodb://localhost/notes`);
+	mongoose.connect("mongodb://localhost:27017/notes");
 }
 /*метод для получения всех заметок*/
 export function listNotes(){
@@ -21,7 +21,7 @@ export function createNote(date){
 		createdAt:new Date()
 	});
 
-	return note save();
+	return note.save();
 }
 /*удаление заметки*/
 export function deleteNote(id){
